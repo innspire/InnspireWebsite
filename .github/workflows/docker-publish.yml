@@ -30,3 +30,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           tags: ghcr.io/innspire/innspirewebsite:latest
+          push: true
