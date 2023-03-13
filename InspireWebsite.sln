@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InnspireWebsite", "src\InnspireWebsite.csproj", "{A05CD07B-E951-4343-BA53-6439790882C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnspireWebsiteTest", "test\InnspireWebsiteTest\InnspireWebsiteTest.csproj", "{306C638B-9779-48AA-9270-02E1408C12C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InnspireWebsiteTest", "test\InnspireWebsiteTest\InnspireWebsiteTest.csproj", "{306C638B-9779-48AA-9270-02E1408C12C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

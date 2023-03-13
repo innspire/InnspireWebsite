@@ -1,0 +1,200 @@
+﻿<!-- Section Gallery -->
+<div class="section">
+    <div class="widget-gallery-carousel">
+        <div class="wrapper-full-inner">
+            <!-- Gallery Title -->
+            <div class="widget-title">
+                <h5>GALLERY</h5>
+                <h2>Discover The Grandium</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget commodo orci. Integer varius nibh eu mattis porta. Pellentesque dictum sem eget cursus semper. Nullam quis blandit lorem.</p>
+            </div>
+            <!-- Gallery Title End -->
+            <!-- Gallery Carousel -->
+            <div class="widget-carousel owl-carousel owl-theme">
+                <div class="gallery-item">
+                    <a href="img/photo-services-6-1.jpg" style="background-image:url('img/photo-services-6-1.jpg');" title="Photo Name" class="popup-gallery">
+                        <span class="item-text">Swimming Pool</span>
+                    </a>
+                </div>
+                <div class="gallery-item">
+                    <a href="img/photo-services-1-2.jpg" style="background-image:url('img/photo-services-1-2.jpg');" title="Photo Name" class="popup-gallery">
+                        <span class="item-text">Sky Bar &amp; Lounge</span>
+                    </a>
+                </div>
+                <div class="gallery-item">
+                    <a href="img/photo-services-2-1.jpg" style="background-image:url('img/photo-services-2-1.jpg');" title="Photo Name" class="popup-gallery">
+                        <span class="item-text">Private Dining</span>
+                    </a>
+                </div>
+                <div class="gallery-item">
+                    <a href="img/photo-services-3-1.jpg" style="background-image:url('img/photo-services-3-1.jpg');" title="Photo Name" class="popup-gallery">
+                        <span class="item-text">Conference &amp; Events</span>
+                    </a>
+                </div>
+                <div class="gallery-item">
+                    <a href="img/photo-services-4-1.jpg" style="background-image:url('img/photo-services-4-1.jpg');" title="Photo Name" class="popup-gallery">
+                        <span class="item-text">Wedding Venue</span>
+                    </a>
+                </div>
+                <div class="gallery-item">
+                    <a href="img/photo-services-5-1.jpg" style="background-image:url('img/photo-services-5-1.jpg');" title="Photo Name" class="popup-gallery">
+                        <span class="item-text">Spa &amp; Beauty Center</span>
+                    </a>
+                </div>
+            </div>
+            <!-- Gallery Carousel End -->
+        </div>
+    </div>
+</div>
+<!-- Section Gallery End -->
+
+<style>
+    .widget-gallery-carousel {
+        background-color: #fff;
+    }
+
+        .widget-gallery-carousel .gallery-item {
+            position: relative;
+            padding-top: 100%;
+        }
+
+            .widget-gallery-carousel .gallery-item a {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                display: block;
+                background-repeat: no-repeat;
+                background-position: top center;
+                background-size: cover;
+            }
+
+            .widget-gallery-carousel .gallery-item .item-text {
+                display: none;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                padding: 80px 40px 40px 40px;
+                font-size: 24px;
+                color: #fff;
+                text-align: center;
+                background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(36,50,74,1) 100%);
+                background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(36,50,74,1) 100%);
+                background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(36,50,74,1) 100%);
+            }
+
+        .widget-gallery-carousel .widget-carousel:before,
+        .widget-gallery-carousel .widget-carousel:after {
+            position: absolute;
+            top: 80px;
+            bottom: 80px;
+            z-index: 1;
+            width: 33.33333333333333%;
+            content: "";
+            display: inline-block;
+            background-color: aliceblue;
+        }
+
+        .widget-gallery-carousel .widget-carousel:before {
+            left: 0;
+            background: -moz-linear-gradient(left, rgba(255,255,255,1)50%, rgba(255,255,255,0) 100%);
+            background: -webkit-linear-gradient(left, rgba(255,255,255,1) 5%,rgba(255,255,255,0) 100%);
+            background: linear-gradient(to right, rgba(255,255,255,1) 5%,rgba(255,255,255,0) 100%);
+        }
+
+        .widget-gallery-carousel .widget-carousel:after {
+            right: 0;
+            background: -moz-linear-gradient(left, rgba(255,255,255,0) 5%, rgba(255,255,255,1) 100%);
+            background: -webkit-linear-gradient(left, rgba(255,255,255,0) 5%,rgba(255,255,255,1) 100%);
+            background: linear-gradient(to right, rgba(255,255,255,0) 5%,rgba(255,255,255,1) 100%);
+        }
+
+        .widget-gallery-carousel .widget-carousel .owl-stage-outer {
+            padding-top: 80px;
+            padding-bottom: 80px;
+            margin-top: -80px;
+            margin-bottom: -80px;
+        }
+
+        .widget-gallery-carousel .widget-carousel .owl-item.center {
+            z-index: 2;
+        }
+
+            .widget-gallery-carousel .widget-carousel .owl-item.center .gallery-item a {
+                top: -50px;
+                bottom: -50px;
+                left: -50px;
+                right: -50px;
+                border: 20px solid #fff;
+                -webkit-box-shadow: 0px 0px 30px 0px rgba(33, 30, 25, 0.2);
+                -moz-box-shadow: 0px 0px 30px 0px rgba(33, 30, 25, 0.2);
+                box-shadow: 0px 0px 30px 0px rgba(33, 30, 25, 0.2);
+            }
+
+            .widget-gallery-carousel .widget-carousel .owl-item.center .gallery-item .item-text {
+                display: block;
+            }
+
+        .widget-gallery-carousel .widget-carousel .owl-nav {
+            margin-top: 0;
+        }
+
+            .widget-gallery-carousel .widget-carousel .owl-nav [class*='owl-'] {
+                position: absolute;
+                top: 50%;
+                z-index: 2;
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                margin: -25px 0 0 0;
+                padding: 0;
+                font: normal normal normal 14px/1 FontAwesome;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                color: #d77b5d;
+                background-color: #fff;
+                -webkit-border-radius: 0;
+                -moz-border-radius: 0;
+                -ms-border-radius: 0;
+                -o-border-radius: 0;
+                border-radius: 0;
+            }
+
+                .widget-gallery-carousel .widget-carousel .owl-nav [class*='owl-']:hover {
+                    color: #d77b5d;
+                    background-color: #fff;
+                }
+
+            .widget-gallery-carousel .widget-carousel .owl-nav .owl-prev {
+                left: calc(33.33333333333333% - 98px);
+            }
+
+            .widget-gallery-carousel .widget-carousel .owl-nav .owl-next {
+                right: calc(33.33333333333333% - 98px);
+            }
+
+                .widget-gallery-carousel .widget-carousel .owl-nav .owl-prev:before,
+                .widget-gallery-carousel .widget-carousel .owl-nav .owl-next:before {
+                    line-height: 50px;
+                }
+
+            .widget-gallery-carousel .widget-carousel .owl-nav .owl-prev:before {
+                content: "\f177";
+            }
+
+            .widget-gallery-carousel .widget-carousel .owl-nav .owl-next:before {
+                content: "\f178";
+            }
+
+            .widget-gallery-carousel .widget-carousel .owl-nav .disabled {
+                opacity: 1;
+                cursor: pointer;
+            }
+</style>
+
+@code {
+
+}

@@ -1,0 +1,10 @@
+﻿@page "/room/{RoomId}"
+
+
+<PageTitleComponent />
+
+<InnspireWebsite.Components.Room.RoomDetailComponent />
+
+@code {
+    [Parameter] public string? RoomId { get; set; }
+}

@@ -1,0 +1,331 @@
+﻿<!-- Section Slider -->
+<div class="section">
+    <div class="widget-slider">
+        <div class="wrapper-full">
+            <!-- Slider Carousel -->
+            <div class="widget-carousel owl-carousel owl-theme">
+                <div class="slider-item" style="background-image: url('img/photo-slide-1.jpg');">
+                    <div class="wrapper">
+                        <div class="item-inner">
+                            <h5>WELCOME TO THE GRANDIUM</h5>
+                            <h1>Experience the Freedom</h1>
+                            <h2>in London</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-item" style="background-image: url('img/photo-slide-2.jpg');">
+                    <div class="wrapper">
+                        <div class="item-inner">
+                            <h5>WELCOME TO THE GRANDIUM</h5>
+                            <h1>A Place to Relax</h1>
+                            <h2>in Maldives</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-item" style="background-image: url('img/photo-slide-3.jpg');">
+                    <div class="wrapper">
+                        <div class="item-inner">
+                            <h5>WELCOME TO THE GRANDIUM</h5>
+                            <h1>Touch The Sea</h1>
+                            <h2>in Monaco</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slider Carousel End -->
+            <!-- Slider Booking -->
+            <div class="slider-booking">
+                <div class="wrapper">
+                    <h5>BOOK NOW YOUR HOTEL</h5>
+                    <form>
+                        <ul>
+                            <li>
+                                <i class="fa fa-calendar-plus-o"></i>
+                                <input type="text" name="checkin" placeholder="CHECK IN" class="datepicker" required>
+                            </li>
+                            <li>
+                                <i class="fa fa-calendar-plus-o"></i>
+                                <input type="text" name="checkout" placeholder="CHECK OUT" class="datepicker" required>
+                            </li>
+                            <li>
+                                <i class="fa fa-caret-down"></i>
+                                <select name="adults" required>
+                                    <option value="">ADULTS</option>
+                                    <option value="1">1 ADULT</option>
+                                    <option value="2">2 ADULT</option>
+                                    <option value="3">3 ADULT</option>
+                                </select>
+                            </li>
+                            <li>
+                                <i class="fa fa-caret-down"></i>
+                                <select name="childrens" required>
+                                    <option value="">CHILDRENS</option>
+                                    <option value="1">1 CHILDREN</option>
+                                    <option value="2">2 CHILDREN</option>
+                                    <option value="3">3 CHILDREN</option>
+                                </select>
+                            </li>
+                            <li>
+                                <button type="submit" class="btn">BOOK NOW</button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+            <!-- Slider Booking End -->
+        </div>
+    </div>
+</div>
+<!-- Section Slider End -->
+
+                                    <style>
+    .widget-slider {
+        position: relative;
+    }
+
+        .widget-slider .widget-carousel .slider-item {
+            position: relative;
+            min-height: 100vh;
+            padding-top: 270px;
+            padding-bottom: 270px;
+            text-align: center;
+            background-repeat: no-repeat;
+            background-position: top center;
+            background-size: cover;
+        }
+
+            .widget-slider .widget-carousel .slider-item:after {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                content: "";
+                display: block;
+                background-color: rgba(36, 50, 74, 0.7);
+            }
+
+            .widget-slider .widget-carousel .slider-item .item-inner {
+                position: relative;
+                z-index: 1;
+                padding-left: 70px;
+                padding-right: 70px;
+                color: #fff;
+            }
+
+                .widget-slider .widget-carousel .slider-item .item-inner h1 {
+                    font-size: 60px;
+                    margin-bottom: 20px;
+                }
+
+                .widget-slider .widget-carousel .slider-item .item-inner h2 {
+                    position: relative;
+                    display: inline-block;
+                    font-size: 28px;
+                    font-style: italic;
+                    margin-bottom: 0;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                }
+
+                    .widget-slider .widget-carousel .slider-item .item-inner h2:before,
+                    .widget-slider .widget-carousel .slider-item .item-inner h2:after {
+                        position: absolute;
+                        top: 60%;
+                        width: 10px;
+                        height: 1px;
+                        content: "";
+                        display: inline-block;
+                        background-color: #fff;
+                    }
+
+                    .widget-slider .widget-carousel .slider-item .item-inner h2:before {
+                        left: 0;
+                    }
+
+                    .widget-slider .widget-carousel .slider-item .item-inner h2:after {
+                        right: 0;
+                    }
+
+        .widget-slider .widget-carousel .owl-dots {
+            display: none;
+            position: absolute;
+            left: 0;
+            bottom: 40px;
+            width: 100%;
+            margin-top: 0;
+        }
+
+            .widget-slider .widget-carousel .owl-dots .owl-dot span {
+                background-color: #fff;
+            }
+
+            .widget-slider .widget-carousel .owl-dots .owl-dot.active span,
+            .widget-slider .widget-carousel .owl-dots .owl-dot:hover span {
+                background-color: #d77b5d;
+            }
+
+        .widget-slider .widget-carousel .owl-nav {
+            margin: 0;
+        }
+
+            .widget-slider .widget-carousel .owl-nav [class*="owl-"] {
+                position: absolute;
+                top: 50%;
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                margin: -25px 0 0 0;
+                padding: 0;
+                border: 1px solid #fff;
+                font: normal normal normal 14px/1 FontAwesome;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                color: #fff;
+                opacity: 0.5;
+                background: transparent;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                -ms-border-radius: 50%;
+                -o-border-radius: 50%;
+                border-radius: 50%;
+            }
+
+                .widget-slider .widget-carousel .owl-nav [class*="owl-"]:hover {
+                    opacity: 1;
+                    background: transparent;
+                }
+
+            .widget-slider .widget-carousel .owl-nav .owl-prev {
+                left: 60px;
+            }
+
+            .widget-slider .widget-carousel .owl-nav .owl-next {
+                right: 60px;
+            }
+
+                .widget-slider .widget-carousel .owl-nav .owl-prev:before,
+                .widget-slider .widget-carousel .owl-nav .owl-next:before {
+                    line-height: 50px;
+                }
+
+            .widget-slider .widget-carousel .owl-nav .owl-prev:before {
+                content: "\f104";
+            }
+
+            .widget-slider .widget-carousel .owl-nav .owl-next:before {
+                content: "\f105";
+            }
+
+            .widget-slider .widget-carousel .owl-nav .disabled,
+            .widget-slider .widget-carousel .owl-nav .disabled:hover {
+                opacity: 0.5;
+            }
+
+                .widget-slider .widget-carousel .owl-nav.disabled + .owl-dots {
+                    display: block;
+                }
+
+        .widget-slider .slider-booking {
+            position: absolute;
+            bottom: 100px;
+            left: 0;
+            z-index: 2;
+            width: 100%;
+            color: #fff;
+        }
+
+            .widget-slider .slider-booking h5 {
+                font-size: 11px;
+                color: #818a9c;
+                text-align: center;
+            }
+
+            .widget-slider .slider-booking ul {
+                width: 830px;
+                padding: 20px;
+                margin: 0 auto;
+                background-color: rgba(129, 138, 156, 0.3);
+                -webkit-box-shadow: 0px 0px 30px 0px rgba(34, 30, 24, 0.5);
+                -moz-box-shadow: 0px 0px 30px 0px rgba(34, 30, 24, 0.5);
+                box-shadow: 0px 0px 30px 0px rgba(34, 30, 24, 0.5);
+            }
+
+                .widget-slider .slider-booking ul li {
+                    position: relative;
+                    float: left;
+                    width: 20%;
+                    padding-right: 10px;
+                    text-align: left;
+                }
+
+                    .widget-slider .slider-booking ul li select,
+                    .widget-slider .slider-booking ul li input[type="text"] {
+                        width: 100%;
+                        height: 40px;
+                        line-height: 40px;
+                        padding: 0 15px;
+                        text-transform: uppercase;
+                        background-color: #5c677b;
+                    }
+
+                    .widget-slider .slider-booking ul li select {
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        appearance: none;
+                        -webkit-border-radius: 0;
+                        -moz-border-radius: 0;
+                        -ms-border-radius: 0;
+                        -o-border-radius: 0;
+                        border-radius: 0;
+                    }
+
+                        .widget-slider .slider-booking ul li select::-ms-expand {
+                            display: none;
+                        }
+
+                    .widget-slider .slider-booking ul li button {
+                        display: block;
+                        width: 100%;
+                    }
+
+                    .widget-slider .slider-booking ul li .fa {
+                        position: absolute;
+                        top: 10px;
+                        left: calc(100% - 40px);
+                        z-index: 1;
+                        width: 20px;
+                        height: 20px;
+                        line-height: 20px;
+                        text-align: center;
+                    }
+
+                    .widget-slider .slider-booking ul li ::-webkit-input-placeholder {
+                        color: #fff;
+                    }
+
+                    .widget-slider .slider-booking ul li :-moz-placeholder {
+                        color: #fff;
+                    }
+
+                    .widget-slider .slider-booking ul li ::-moz-placeholder {
+                        color: #fff;
+                    }
+
+                    .widget-slider .slider-booking ul li :-ms-input-placeholder {
+                        color: #fff;
+                    }
+
+                    .widget-slider .slider-booking ul li:last-child {
+                        padding-right: 0;
+                    }
+
+        .widget-slider.has-rooms .slider-booking {
+            bottom: 120px;
+        }
+
+        .widget-slider.has-rooms .widget-carousel .owl-nav.disabled + .owl-dots {
+            display: none;
+        }
+                                    </style>

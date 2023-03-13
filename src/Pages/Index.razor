@@ -4,25 +4,20 @@
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
+<InnspireWebsite.Components.Index.HomeSliderComponent />
 
-<button class="btn btn-success" @onclick=ChangeSuccessColor>Test Button</button>
+<InnspireWebsite.Components.Index.RoomScrollComponent />
 
-<div class="row">
-    <div class="alert alert-success">Success alert</div>
-</div>
+<InnspireWebsite.Components.Index.AboutPromoComponent />
 
-Welcome to your new app.
+<InnspireWebsite.Components.Index.FeaturesComponent />
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<InnspireWebsite.Components.Index.GalleryPromoComponent />
+
+<InnspireWebsite.Components.Index.OffersComponent />
+
+<InnspireWebsite.Components.Index.BlogPromoComponent />
 
 @code {
-    public async Task ChangeSuccessColor()
-    {
-        var rnd = new Random();
-        await JsRuntime.InvokeVoidAsync("setCssVariable", "bs-success-rgb", $"{rnd.Next(0, 255)}, {rnd.Next(0, 255)}, {rnd.Next(0, 255)}");
-        await JsRuntime.InvokeVoidAsync("setCssVariable", "bs-success", $"#ff0000");
-        await JsRuntime.InvokeVoidAsync("setCssVariable", "bs-green", $"#ff0000");
-        await JsRuntime.InvokeVoidAsync("setCssVariable", "bs-body-bg", $"#ff0000");
-    }
+    
 }

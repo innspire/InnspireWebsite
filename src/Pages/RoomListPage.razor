@@ -1,0 +1,10 @@
+﻿@page "/rooms"
+@page "/rooms/{Category}"
+
+<PageTitleComponent />
+
+<InnspireWebsite.Components.Rooms.RoomListComponent />
+
+@code {
+    [Parameter] public string? Category { get; set; }
+}

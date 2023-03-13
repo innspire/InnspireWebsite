@@ -1,0 +1,75 @@
+﻿<!-- Section Video -->
+<div class="section">
+    <div class="widget-video-full" style="background-image: url('img/thumb-video-full.jpg')">
+        <div class="wrapper-full-inner">
+            <!-- Video Title -->
+            <div class="widget-title">
+                <h5>OVERVIEW</h5>
+                <h2>Video Tour</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget commodo orci. Integer varius nibh eu mattis porta. Pellentesque dictum sem eget cursus semper. Nullam quis blandit lorem.</p>
+            </div>
+            <!-- Video Title End -->
+            <!-- Video Content -->
+            <div class="widget-inner">
+                <a href="https://vimeo.com/39493181" class="video-play popup-video"><i class="fa fa-play"></i></a>
+            </div>
+            <!-- Video Content End -->
+        </div>
+    </div>
+</div>
+<!-- Section Video End -->
+
+<style>
+    .widget-video-full {
+        background-color: #fff;
+        background-repeat: no-repeat;
+        background-position: bottom center;
+        background-size: cover;
+    }
+
+        .widget-video-full .widget-inner {
+            position: relative;
+            left: 50%;
+            display: inline-block;
+            -webkit-transform: translateX(-50%);
+            -moz-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            -o-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+
+            .widget-video-full .widget-inner .video-play {
+                display: inline-block;
+                width: 200px;
+                height: 200px;
+                line-height: 180px;
+                text-align: center;
+                font-size: 36px;
+                color: #fff;
+                border: 10px solid #fff;
+                background-color: rgba(36, 50, 74, 0.5);
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                -ms-border-radius: 50%;
+                -o-border-radius: 50%;
+                border-radius: 50%;
+                -webkit-box-shadow: 0px 0px 30px 0px rgba(33, 30, 25, 0.1);
+                -moz-box-shadow: 0px 0px 30px 0px rgba(33, 30, 25, 0.1);
+                box-shadow: 0px 0px 30px 0px rgba(33, 30, 25, 0.1);
+            }
+
+                .widget-video-full .widget-inner .video-play:hover {
+                    -webkit-transform: scale(1.1);
+                    -moz-transform: scale(1.1);
+                    -ms-transform: scale(1.1);
+                    -o-transform: scale(1.1);
+                    transform: scale(1.1);
+                }
+
+        .widget-video-full .widget-title + .widget-inner {
+            margin-bottom: 100px;
+        }
+</style>
+@code {
+
+}

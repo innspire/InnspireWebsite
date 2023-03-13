@@ -1,0 +1,338 @@
+﻿@inject IJSRuntime jsRuntime
+
+@inject ILogger<HeaderComponent> logger
+@inject NavigationManager navManager
+
+<!-- Site Header -->
+<div class="site-header @((headerOver) ? "header-over" : null)  @((navOpen) ? "nav-open" : null)">
+    <!-- Header Top -->
+    <div class="header-top">
+        <div class="wrapper">
+            <div class="header-contact">
+                <ul>
+                    <li>+49 4725 372</li>
+                    <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                </ul>
+            </div>
+            <div class="header-lang">
+                <ul>
+                    <li class="active"><a href="#">EN</a></li>
+                    <li><a href="#">FR</a></li>
+                    <li><a href="#">DE</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Header Top End -->
+    <!-- Header Bottom -->
+    <div class="header-bottom">
+        <div class="wrapper">
+            <div class="header-logo">
+                <a href="index.html"><img src="img/logo.png" alt="Hotel Rungholt"></a>
+            </div>
+            <div class="header-nav">
+                <ul class="nav-left">
+                    <li><a href="/">Start</a></li>
+                    <li><a href="/about">ABOUT US</a></li>
+                    <li class="sub">
+                        <a href="/rooms">ROOMS</a>
+                        <ul>
+                            <li><a href="/rooms">List</a></li>
+                            <li><a href="/room/1">Details</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/services">SERVICES</a></li>
+                </ul>
+                <ul class="nav-right">
+                    <li><a href="/gallery">GALLERY</a></li>
+                    <li><a href="/booking">BOOKING</a></li>
+                    <li class="sub">
+                        <a href="/blog">BLOG</a>
+                        <ul>
+                            <li><a href="/blog">BLOG LISTING</a></li>
+                            <li><a href="/article/name">ARTICLE</a></li>
+   
+                        </ul>
+                    </li>
+                    <li><a href="/contact">CONTACT</a></li>
+                </ul>
+            </div>
+            <div class="header-toggle" @onclick="() => navOpen = !navOpen">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </div>
+    <!-- Header Bottom End -->
+</div>
+<!-- Site Header End -->
+
+<style>
+    .site-header {
+        position: relative;
+        z-index: 999;
+        width: 100%;
+        background-color: #24324a;
+    }
+
+        .site-header .header-top {
+            padding-top: 50px;
+            padding-bottom: 50px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: #818a9c;
+        }
+
+            .site-header .header-top a {
+                color: #818a9c;
+            }
+
+            .site-header .header-top .header-contact {
+                float: left;
+            }
+
+                .site-header .header-top .header-contact ul li {
+                    float: left;
+                    line-height: 20px;
+                    margin-right: 20px;
+                    text-transform: uppercase;
+                }
+
+                    .site-header .header-top .header-contact ul li a {
+                        display: block;
+                        height: 20px;
+                        line-height: 20px;
+                    }
+
+                    .site-header .header-top .header-contact ul li:hover a {
+                        color: #fff;
+                    }
+
+                    .site-header .header-top .header-contact ul li:last-child {
+                        margin-right: 0;
+                    }
+
+            .site-header .header-top .header-lang {
+                float: right;
+            }
+
+                .site-header .header-top .header-lang ul li {
+                    float: left;
+                    margin-right: 20px;
+                }
+
+                    .site-header .header-top .header-lang ul li a {
+                        display: block;
+                        height: 20px;
+                        line-height: 20px;
+                        text-align: center;
+                        text-transform: uppercase;
+                    }
+
+                    .site-header .header-top .header-lang ul li:hover a,
+                    .site-header .header-top .header-lang ul li.active a {
+                        color: #fff;
+                    }
+
+                    .site-header .header-top .header-lang ul li:last-child {
+                        margin-right: 0;
+                    }
+
+        .site-header .header-bottom {
+            position: relative;
+            min-height: 110px;
+        }
+
+            .site-header .header-bottom .header-logo {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                width: 220px;
+                -webkit-transform: translateX(-50%);
+                -moz-transform: translateX(-50%);
+                -ms-transform: translateX(-50%);
+                -o-transform: translateX(-50%);
+                transform: translateX(-50%);
+            }
+
+                .site-header .header-bottom .header-logo img {
+                    width: 100%;
+                }
+
+            .site-header .header-bottom .header-nav {
+                text-align: center;
+            }
+
+                .site-header .header-bottom .header-nav ul li a {
+                    display: block;
+                    height: 44px;
+                    line-height: 44px;
+                    padding: 0 15px;
+                    font-family: 'Lato', sans-serif;
+                    font-weight: 900;
+                    font-size: 12px;
+                    letter-spacing: 2px;
+                    text-transform: uppercase;
+                    color: #fff;
+                }
+
+                .site-header .header-bottom .header-nav ul li:hover > a {
+                    color: #d77b5d;
+                }
+
+                .site-header .header-bottom .header-nav ul li.sub {
+                    position: relative;
+                    z-index: 1;
+                }
+
+                    .site-header .header-bottom .header-nav ul li.sub > ul {
+                        display: none;
+                    }
+
+                    .site-header .header-bottom .header-nav ul li.sub:hover > ul {
+                        display: block;
+                    }
+
+                .site-header .header-bottom .header-nav > ul {
+                    display: inline-block;
+                }
+
+                    .site-header .header-bottom .header-nav > ul > li {
+                        float: left;
+                    }
+
+                        .site-header .header-bottom .header-nav > ul > li.sub ul li a {
+                            min-width: 120px;
+                            font-size: 11px;
+                            white-space: nowrap;
+                            text-align: left;
+                            background-color: #1a2436;
+                        }
+
+                        .site-header .header-bottom .header-nav > ul > li.sub ul li ul {
+                            position: absolute;
+                            top: 0;
+                            left: 100%;
+                        }
+
+                        .site-header .header-bottom .header-nav > ul > li.sub:before {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 1px;
+                            content: "";
+                            display: none;
+                            background-color: #d77b5d;
+                        }
+
+                        .site-header .header-bottom .header-nav > ul > li.sub > a {
+                            -webkit-transition: none;
+                            -moz-transition: none;
+                            -ms-transition: none;
+                            -o-transition: none;
+                            transition: none;
+                        }
+
+                        .site-header .header-bottom .header-nav > ul > li.sub > ul {
+                            position: absolute;
+                            top: 100%;
+                            left: 0;
+                        }
+
+                        .site-header .header-bottom .header-nav > ul > li.sub:hover:before {
+                            display: block;
+                        }
+
+                        .site-header .header-bottom .header-nav > ul > li.sub:hover > a {
+                            color: #fff;
+                            background-color: #1a2436;
+                        }
+
+                    .site-header .header-bottom .header-nav > ul.nav-left {
+                        padding-right: 150px;
+                    }
+
+                    .site-header .header-bottom .header-nav > ul.nav-right {
+                        padding-left: 150px;
+                    }
+
+            .site-header .header-bottom .header-toggle {
+                display: none;
+                position: absolute;
+                top: 0;
+                right: 60px;
+                width: 60px;
+                height: 60px;
+                line-height: 60px;
+                text-align: center;
+                cursor: pointer;
+                color: #fff;
+                background-color: #d77b5d;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                -ms-border-radius: 50%;
+                -o-border-radius: 50%;
+                border-radius: 50%;
+            }
+
+        .site-header.header-over {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: -moz-linear-gradient(top, rgba(36,50,74,0.65) 0%, rgba(0,0,0,0) 100%);
+            background: -webkit-linear-gradient(top, rgba(36,50,74,0.65) 0%,rgba(0,0,0,0) 100%);
+            background: linear-gradient(to bottom, rgba(36,50,74,0.65) 0%,rgba(0,0,0,0) 100%);
+        }
+</style>
+
+@code {
+    private bool navOpen = false;
+
+    private bool headerOver = false;
+
+    private async Task StartApp()
+    {
+        try
+        {
+            await jsRuntime.InvokeVoidAsync("startapp");
+        }
+        catch (Exception ex)
+        {
+
+            logger?.LogError(ex, "Something went wrong executing the startapp");
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            UpdateHeaderOver();
+            await StartApp();
+            navManager.LocationChanged += async (s, e) =>
+            {
+                UpdateHeaderOver();
+                await StartApp();
+            };
+        }
+    }
+
+    private void UpdateHeaderOver()
+    {
+        var path = navManager.Uri.AsSpan().Slice(navManager.BaseUri.Length);
+        if (path.Length == 0)
+        {
+            headerOver = true;
+        }
+        else
+        {
+            headerOver = false;
+        }
+        InvokeAsync(StateHasChanged);
+    }
+}
