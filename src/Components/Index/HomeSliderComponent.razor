@@ -1,36 +1,26 @@
-﻿<!-- Section Slider -->
+﻿@using System.Drawing;
+@inject Services.SliderService sliderService
+@inject IJSRuntime jsRuntime
+@inject ILogger<HomeSliderComponent> logger
+
+<!-- Section Slider -->
 <div class="section">
     <div class="widget-slider">
         <div class="wrapper-full">
             <!-- Slider Carousel -->
             <div class="widget-carousel owl-carousel owl-theme">
-                <div class="slider-item" style="background-image: url('img/photo-slide-1.jpg');">
-                    <div class="wrapper">
-                        <div class="item-inner">
-                            <h5>WELCOME TO THE GRANDIUM</h5>
-                            <h1>Experience the Freedom</h1>
-                            <h2>in London</h2>
+                @foreach(var item in sliderService.GetSlides())
+                {
+                    <div class="slider-item" style="background-image: url('@(item.ImageSource)');">
+                        <div class="wrapper">
+                            <div class="item-inner">
+                                <h5>@item.PreHeader</h5>
+                                <h1>@item.Title</h1>
+                                <h2>@item.Subtitle</h2>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="slider-item" style="background-image: url('img/photo-slide-2.jpg');">
-                    <div class="wrapper">
-                        <div class="item-inner">
-                            <h5>WELCOME TO THE GRANDIUM</h5>
-                            <h1>A Place to Relax</h1>
-                            <h2>in Maldives</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider-item" style="background-image: url('img/photo-slide-3.jpg');">
-                    <div class="wrapper">
-                        <div class="item-inner">
-                            <h5>WELCOME TO THE GRANDIUM</h5>
-                            <h1>Touch The Sea</h1>
-                            <h2>in Monaco</h2>
-                        </div>
-                    </div>
-                </div>
+                }
             </div>
             <!-- Slider Carousel End -->
             <!-- Slider Booking -->
@@ -39,11 +29,11 @@
                     <h5>BOOK NOW YOUR HOTEL</h5>
                     <form>
                         <ul>
-                            <li>
+                            <li @onclick="ShowCheckInCalendar" id="@checkInInputName">
                                 <i class="fa fa-calendar-plus-o"></i>
-                                <input type="text" name="checkin" placeholder="CHECK IN" class="datepicker" required>
+                                <input type="text" name="checkin" placeholder="CHECK IN" class="datepicker hasDatepicker"  required>
                             </li>
-                            <li>
+                            <li @onclick="() => DateMode = SelectDateModes.CheckOutDate">
                                 <i class="fa fa-calendar-plus-o"></i>
                                 <input type="text" name="checkout" placeholder="CHECK OUT" class="datepicker" required>
                             </li>
@@ -78,7 +68,51 @@
 </div>
 <!-- Section Slider End -->
 
-                                    <style>
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" style="@calendarPosition; display: @((DateMode == SelectDateModes.None) ? "none" : "block");">
+    <div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all">
+        <a class="ui-datepicker-prev ui-corner-all" title="Prev" @onclick="() => calendarPageDate = calendarPageDate.AddMonths(-1)">
+            <span class="ui-icon ui-icon-circle-triangle-w">Prev</span>
+        </a>
+        <a class="ui-datepicker-next ui-corner-all" data-handler="next" @onclick="() => calendarPageDate = calendarPageDate.AddMonths(1)">
+                <span class="ui-icon ui-icon-circle-triangle-e">Next</span></a>
+                <div class="ui-datepicker-title">
+                    <span class="ui-datepicker-month">@calendarPageDate.ToString("MMMM")</span>&nbsp;
+                    <span class="ui-datepicker-year">@calendarPageDate.ToString("yyyy")</span>
+                </div>
+    </div>
+    <table class="ui-datepicker-calendar">
+        <thead>
+            <tr>
+                <th scope="col" class="ui-datepicker-week-start"><span title="Monday">Mo</span></th>
+                <th scope="col"><span title="Tuesday">Di</span></th>
+                <th scope="col"><span title="Wednesday">Mi</span></th>
+                <th scope="col"><span title="Thursday">Do</span></th>
+                <th scope="col"><span title="Friday">Fr</span></th>
+                <th scope="col" class="ui-datepicker-week-end"><span title="Saturday">Sa</span></th>
+                <th scope="col" class="ui-datepicker-week-end"><span title="Sunday">So</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            @for (int week=1; week < weeksToRender * 7; week += 7)
+            {
+                <tr>
+                    @for(int day=1;day <= 7; day++)
+                    {
+                        DateTime date = startDate.AddDays(week + day);
+                        <td>
+                            <a class="@GetClassForDay(date)" style="cursor: pointer" @onclick="() => SelectDate(date)">@date.Day</a>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+   
+
     .widget-slider {
         position: relative;
     }
@@ -329,3 +363,125 @@
             display: none;
         }
                                     </style>
+
+@code {
+    private const string checkInInputName = "checkInInput";
+
+    private DateTime calendarPageDate = DateTime.Now;
+
+    private int weeksToRender = 5;
+
+    private DateTime? selectedStartDate = null;
+    private DateTime? selectedEndDate = null;
+
+    private string calendarPosition = "position: absolute; top: 467px; left: 308.5px; z-index: 3;";
+
+    private class Offsets
+    {
+        public double OffsetLeft { get; set; }
+
+        public double OffsetTop { get; set; }
+    }
+
+    private class WindowDimensions
+    {
+        public double Width { get; set; }
+
+        public double Height { get; set; }
+    }
+
+
+    private async Task ShowCheckInCalendar(MouseEventArgs args)
+    {
+        if (DateMode != SelectDateModes.CheckInDate)
+            DateMode = SelectDateModes.CheckInDate; 
+        else 
+            DateMode = SelectDateModes.None;
+
+        WindowDimensions pageSize = await jsRuntime.InvokeAsync<WindowDimensions>("getWindowDimensions");
+        Offsets offsets = await jsRuntime.InvokeAsync<Offsets>("getElementPosition", checkInInputName);
+
+        logger?.LogInformation($"Page Height: {pageSize.Height}, PageY: {args.ClientY}");
+        if (args.ClientY > (pageSize.Height / 2))
+        {
+            // render above
+            calendarPosition = $"position: absolute; top: 450px; left: {offsets.OffsetLeft}px; z-index: 3;";
+        }
+        else
+        {
+            // render below
+            calendarPosition = $"position: absolute; top: 800px; left: {offsets.OffsetLeft}px; z-index: 3;";
+        }
+    }
+
+    private DateTime startDate
+    {
+        get
+        {
+            var firstDayOfTheMonth = new DateTime(DateTime.Now.Year, calendarPageDate.Month, 1);
+            if (firstDayOfTheMonth.DayOfWeek == DayOfWeek.Sunday)
+            {
+                weeksToRender = 6;
+                return firstDayOfTheMonth.AddDays(-(int)firstDayOfTheMonth.DayOfWeek - 8);
+
+            }
+            weeksToRender = 5;
+            return firstDayOfTheMonth.AddDays(-(int)firstDayOfTheMonth.DayOfWeek - 1);
+        }
+    }
+
+    private bool IsSameDay(DateTime dt1, DateTime dt2)
+    {
+        return dt1.Year == dt2.Year && dt1.Month == dt2.Month && dt1.Day == dt2.Day;
+    }
+
+    private void SelectDate(DateTime date)
+    {
+        if (DateMode == SelectDateModes.CheckInDate)
+        {
+            this.selectedStartDate = date;
+            if (!this.selectedEndDate.HasValue)
+            {
+                this.DateMode = SelectDateModes.CheckOutDate;
+            }
+        }
+        else if (DateMode == SelectDateModes.CheckOutDate)
+        {
+            this.selectedEndDate = date;
+            this.DateMode = SelectDateModes.None;
+        }
+    }
+
+    private enum SelectDateModes
+    {
+        None,
+        CheckInDate,
+        CheckOutDate
+    }
+
+    private string GetClassForDay(DateTime date)
+    {
+        string style = "";
+        if (selectedStartDate.HasValue && IsSameDay(date, selectedStartDate.Value))
+        {
+            return (DateMode == SelectDateModes.CheckInDate) ? "ui-state-highlight" : "ui-state-active";
+
+        }
+
+        if (selectedEndDate.HasValue && IsSameDay(date, selectedEndDate.Value))
+        {
+            return (DateMode == SelectDateModes.CheckOutDate) ? "ui-state-highlight" : "ui-state-active";
+        }
+
+        if (date.Month != calendarPageDate.Month)
+        {
+            return "ui-datepicker-other-month";
+        }
+
+
+
+        return "ui-state-default";
+    }
+
+    private SelectDateModes DateMode = SelectDateModes.CheckInDate;
+}

@@ -2124,6 +2124,23 @@ window.checkRoom = function (roomId, checkinDate, nights) {
     d21_api.ibe.open({ 'room_id': roomId, 'room': ['a'], 'arrival': checkinDate, 'los': nights });
 }
 
+window.getWindowDimensions = function () {
+	return {
+		width: window.innerWidth,
+		height: window.innerHeight
+	};
+};
+
+window.getElementPosition = function (elementId) {
+	o = document.getElementById(elementId);
+	var result = {
+		offsetLeft: o.offsetLeft,
+		offsetTop: o.offsetTop
+	};
+	console.log(result);
+	return result;
+}
+
 /*! Magnific Popup - v1.1.0 - 2016-02-20
 * http://dimsemenov.com/plugins/magnific-popup/
 * Copyright (c) 2016 Dmitry Semenov; */
